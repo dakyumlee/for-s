@@ -1,7 +1,6 @@
 const audio = document.getElementById('bg-music');
 const progressBar = document.getElementById('music-progress-bar');
 
-// play / pause 토글 함수
 function toggleMusic() {
     if (audio.paused) {
         audio.play().then(() => {

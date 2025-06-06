@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #fff;
+    font-family: "Diphylleia", serif;
+    overflow-x: hidden;
+}
+
+.o {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.o-inner {
+    display: inline-block;
+    padding-top: 1.2%;
+    padding-left: 100%;
+    animation: my-marquee 30s linear infinite;
+}
+
+.o-inner span {
+    display: inline-block;
+    padding-right: 100%;
+    font-size: 20px;
+    color: #aaa;
+}
+
+@keyframes my-marquee {
+    0% {
+        transform: translate(100, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+
+#intro-page {
+    height: 100vh;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.intro-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: 50%;
+    border: 3px solid #333;
+    box-shadow: 0 5px 15px rgba(101, 101, 101, 0.2);
+    margin-bottom: 20px;
+}
+
+.intro-title {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.slogan {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #ccc;
+    font-style: italic;
+}
+
+nav {
+    background-color: #222;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+    .intro-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .slogan {
+        font-size: 1.2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
+
+
+.music-control {
+    font-family: "Diphylleia", serif;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+#music-progress-container-inline {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #555;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+#music-progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    transition: width 0.1s linear;
+}
+
+.play-music-btn {
+    background-color: #222;
+    color: #fff;
+    font-family: "Diphylleia", serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .music-control {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -3,10 +3,20 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #222;
-    color: #fff;
+    background-color: #fceca4;
+    color: #000000;
+    font-family: "Diphylleia", serif;
+    font-size: 20px;
+    overflow-x: hidden;
+}
+
+#d {
+    color: #797979;
     font-family: "Diphylleia", serif;
     overflow-x: hidden;
+    font-size: 13px;
+    align-items: center;
+    text-align: center;
 }
 
 .o {
@@ -25,7 +35,7 @@ body {
     display: inline-block;
     padding-right: 100%;
     font-size: 20px;
-    color: #aaa;
+    color: #000000;
 }
 
 @keyframes my-marquee {
@@ -40,7 +50,7 @@ body {
 
 #intro-page {
     height: 100vh;
-    background-color: #222;
+    background-color: #fceca4;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,26 +64,26 @@ body {
     object-fit: cover;
     object-position: 50% 30%;
     border-radius: 50%;
-    border: 3px solid #333;
-    box-shadow: 0 5px 15px rgba(101, 101, 101, 0.2);
+    border: 3px solid #977b00;
+    box-shadow: 0 5px 15px #977b00;
     margin-bottom: 20px;
 }
 
 .intro-title {
     font-size: 2.5rem;
-    color: #fff;
+    color: #977b00;
     font-weight: bold;
 }
 
 .slogan {
     font-size: 1.5rem;
-    margin-top: 20px;
-    color: #ccc;
+    margin-top: 10px;
+    color: #000000;
     font-style: italic;
 }
 
 nav {
-    background-color: #222;
+    background-color: #fceca4;
     padding: 10px 20px;
     position: sticky;
     top: 0;
@@ -94,7 +104,7 @@ nav li {
 }
 
 nav a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
@@ -107,7 +117,6 @@ nav a:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
     font-size: 0.9rem;
     opacity: 0.7;
 }
@@ -140,14 +149,14 @@ footer {
     left: 10px;
     right: 10px;
     z-index: 9999;
-    background-color: rgba(0,0,0,0.5);
+    background-color: #fceca4;
     border-radius: 10px;
 }
 
 #music-progress-container-inline {
     flex-grow: 1;
     height: 5px;
-    background-color: #555;
+    background-color: transparent;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -155,16 +164,17 @@ footer {
 #music-progress-bar {
     width: 0%;
     height: 100%;
-    background-color: #fff;
+    background-color: #977b00;
     transition: width 0.1s linear;
 }
 
 .play-music-btn {
-    background-color: #222;
-    color: #fff;
+    background-color: #fceca4;
+    color: #000000;
     font-family: "Diphylleia", serif;
     padding: 10px 20px;
-    border: none;
+    border: 3px;
+    border-color: #977b00;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -174,4 +184,15 @@ footer {
         flex-direction: column;
         align-items: stretch;
     }
+}
+
+#intro-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px; 
+    box-sizing: border-box;
 }

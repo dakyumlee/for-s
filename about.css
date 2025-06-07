@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+
+body {
+    font-family: "Diphylleia", serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fceca4;
+    color: #333;
+  }
+
+  header {
+    background: #fceca4;
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  
+  header nav {
+    display: flex;          
+    justify-content: center; 
+    align-items: center;     
+    flex-wrap: nowrap;     
+  }
+  
+  
+  header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: #977b00;
+    transition: width 0.3s ease;
+  }
+  
+  header nav a:hover::after {
+    width: 100%;
+  }  
+
+  
+  header nav a:hover {
+    color: #000000;
+  }
+  
+  .about-section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-style: italic;
+    color: #000000;
+  }
+  
+  .basic-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .basic-info ul li {
+    padding: 12px 0;
+  }
+  
+  .about-me, .keywords, .vision {
+    margin-top: 30px;
+  }
+  
+  .keyword-tags span {
+    display: inline-block;
+    background-color: #977b00;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 5px 12px;
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  section h2 {
+    border-bottom: 2px solid #fceca4;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .basic-info-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 700px;
+  }
+  
+  .basic-info-text {
+    flex: 1;
+  }
+  
+  .basic-info-photo img {
+    width: 220px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  

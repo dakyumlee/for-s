@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact</title>
+  <link rel="stylesheet" href="contact.css" />
+  <header>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+</head>
+<body>
+
+  <section class="contact-section">
+    <h1>Contact</h1>
+    <p>배우 남슬아와의 협업 및 문의는 아래로 연락주세요.</p>
+
+    <p>
+      <strong>Email:</strong> abcseul@naver.com<br>
+      <strong>Instagram:</strong> <a href="https://instagram.com/seuloveuu" target="_blank">@seuloveuu</a>
+    </p>
+
+    <div class="contact-buttons">
+      <a href="mailto:abcseul@naver.com" class="contact-btn">메일 보내기</a>
+      <a href="https://instagram.com/seuloveuu" target="_blank" class="contact-btn">인스타그램 바로가기</a>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <p>응원의 메시지, 하고 싶은 말을 남겨주세요.</p>
+
+    <form id="guestbook-form">
+      <input type="text" id="name" placeholder="이름 (선택)" />
+      <textarea id="message" placeholder="메시지를 입력하세요." required></textarea>
+        <div style="margin:10px 0;">
+            <label style="display: flex; align-items: center; gap: 6px;">
+              <input type="checkbox" id="isSecret" />
+              비밀글
+            </label>
+          </div>          
+      </div>
+      <input type="password" id="password" placeholder="비밀번호 (수정/삭제용)" required />
+      <button type="submit">보내기</button>
+    </form>
+
+    <div id="guestbook-confirmation" style="display:none; margin-top:20px; color:#977b00; font-weight:bold;">
+      메시지가 전송되었습니다. 감사합니다!
+    </div>
+
+    <div id="guestbook-list" style="margin-top:40px;">
+    </div>
+
+    <button onclick="window.location.href='admin.html';" style="margin-top:10px; background-color: #977b00; color: white; border:none; padding:5px 10px; border-radius:4px; font-family: 'Diphylleia', serif; font-size: 12px; cursor:pointer;">관리자 페이지</button>
+    
+
+  </section>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9VtsnQQ6NrmiH5BmG1opPNpX3p8_swd0",
+      authDomain: "seula-a1630.firebaseapp.com",
+      projectId: "seula-a1630",
+      storageBucket: "seula-a1630.firebasestorage.app",
+      messagingSenderId: "768516800325",
+      appId: "1:768516800325:web:2e6ac30364e78749d2882c",
+      measurementId: "G-WVETD4ED7D"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db;
+  </script>
+
+  <script src="contact.js" type="module"></script>
+
+</body>
+</html>

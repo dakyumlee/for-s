@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - 슬아 방명록 관리</title>
+  <link rel="stylesheet" href="contact.css" />
+  <header>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+</head>
+<body>
+
+  <section class="contact-section">
+    <h1>슬아 방명록 관리 페이지</h1>
+    <p style="color:#cfa94f; font-weight:bold;">여기서는 비밀글 포함 전체 글을 확인/삭제할 수 있습니다.</p>
+
+    <div id="admin-guestbook-list" style="margin-top:40px;">
+    </div>
+  </section>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9VtsnQQ6NrmiH5BmG1opPNpX3p8_swd0",
+      authDomain: "seula-a1630.firebaseapp.com",
+      projectId: "seula-a1630",
+      storageBucket: "seula-a1630.firebasestorage.app",
+      messagingSenderId: "768516800325",
+      appId: "1:768516800325:web:2e6ac30364e78749d2882c",
+      measurementId: "G-WVETD4ED7D"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db;
+  </script>
+
+  <!-- admin.js 연결 -->
+  <script src="admin.js" type="module"></script>
+
+</body>
+</html>

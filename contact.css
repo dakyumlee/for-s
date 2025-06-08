@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+
+header {
+    font-family: "Diphylleia", serif;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #977b00;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  header nav a {
+    margin: 6px 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: #977b00;
+    transition: width 0.3s ease;
+  }
+  
+  header nav a:hover::after {
+    width: 100%;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  header nav a {
+    margin: 6px 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: #977b00;
+    transition: width 0.3s ease;
+  }
+  
+  header nav a:hover::after {
+    width: 100%;
+  }
+  
+body {
+    font-family: "Diphylleia", serif;
+    background-color: #fff0b3;
+    color: #333;
+  }
+
+.contact-section {
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Diphylleia", serif;
+  }
+
+  .contact-section p strong {
+    color: #6d4c00;
+  }
+  
+  
+  .contact-section h1 {
+    font-size: 32px;
+    color: #977b00;
+    margin-bottom: 10px;
+  }
+  
+  .contact-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info p {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+  
+  .contact-info a {
+    color: #977b00;
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .contact-buttons {
+    margin-top: 30px;
+  }
+  
+  .contact-btn {
+    display: inline-block;
+    background-color: #977b00;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-btn:hover {
+    background-color: #cfa94f;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-section h1 {
+      font-size: 24px;
+    }
+  
+    .contact-section p {
+      font-size: 14px;
+    }
+  
+    .contact-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+
+body {
+  font-family: "Diphylleia", serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #fff0b3;
+  color: #333;
+}
+
+.guestbook-section {
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.guestbook-section h1 {
+  font-size: 32px;
+  color: #977b00;
+  margin-bottom: 10px;
+}
+
+.guestbook-section p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#guestbook-form input,
+#guestbook-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #977b00;
+  border-radius: 5px;
+  font-family: "Diphylleia", serif;
+  font-size: 14px;
+}
+
+#guestbook-form textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+#guestbook-form button {
+  background-color: #977b00;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Diphylleia", serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#guestbook-form button:hover {
+  background-color: #cfa94f;
+}
+
+#guestbook-confirmation {
+  color: #977b00;
+  font-weight: bold;
+}
+
+#guestbook-list div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fffdf2;
+  text-align: left;
+}
+
+#guestbook-form div label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+
+@media (max-width: 768px) {
+  .guestbook-section h1 {
+    font-size: 24px;
+  }
+
+  .guestbook-section p {
+    font-size: 14px;
+  }
+
+  #guestbook-form button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

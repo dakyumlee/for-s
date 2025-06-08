@@ -23,7 +23,7 @@ header nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* 모바일에서 넘칠 때 자동 줄바꿈 허용 */
+  flex-wrap: wrap;
 }
 
 header nav a {
@@ -78,19 +78,26 @@ header nav a:hover::after {
   align-items: flex-start;
   gap: 30px;
   max-width: 800px;
-  flex-wrap: wrap; /* 모바일 대응 자연스러운 wrap 허용 */
+  flex-wrap: wrap;
 }
 
 .basic-info-text {
-  flex: 1 1 300px; /* 최소 300px, 줄어들면 wrap */
+  flex: 1 1 300px;
 }
 
+
+.basic-info-photo {
+    text-align: center;
+    width: 100%;
+  }
+  
 .basic-info-photo img {
   max-width: 200px;
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .basic-info ul {
@@ -135,9 +142,10 @@ header nav a:hover::after {
   margin-top: 10px;
 }
 
+
 .keyword-tags span {
   display: inline-block;
-  background-color: #cfa94f;
+  background-color: #8a6100;
   font-family: "Diphylleia", serif;
   color: #fff;
   border-radius: 20px;
@@ -150,6 +158,61 @@ section h2 {
   border-bottom: 2px solid #977b00;
   padding-bottom: 5px;
   margin-bottom: 15px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid #977b00;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+  color: #977b00;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content ul li {
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.close {
+  color: #977b00;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #cfa94f;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
 }
 
 @media (max-width: 768px) {
@@ -197,5 +260,10 @@ section h2 {
   #toggle-keywords {
     padding: 6px 12px;
     font-size: 13px;
+  }
+
+  .modal-content {
+    margin: 25% auto;
+    width: 90%;
   }
 }

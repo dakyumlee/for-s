@@ -1,42 +1,909 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio</title>
-    <link rel="stylesheet" href="portfolio.css" />
-    <header>
-        <nav>
-          <a href="index.html">HOME</a>
-          <a href="about.html">ABOUT</a>
-          <a href="portfolio.html">PORTFOLIO</a>
-          <a href="contact.html">CONTACT</a>
-        </nav>
-      </header>
+    <title>Portfolio - Nam Seul A</title>
+    <style>
+        @font-face {
+            font-family: 'KkotNaeum';
+            src: url('./나눔손글씨\ 꽃내음.ttf') format('truetype');
+        }
+
+
+        :root {
+            --primary-gold: #b8941f;
+            --light-gold: #d4af37;
+            --dark-gold: #8b7355;
+            --cream: #fef7e0;
+            --warm-white: #fffcf5;
+            --soft-gray: #6b6b6b;
+            --text-dark: #2c2c2c;
+            --shadow: 0 8px 32px rgba(184, 148, 31, 0.1);
+            --gradient: linear-gradient(135deg, #fef7e0 0%, #f5e6b8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+            background: var(--gradient);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .floating-quote {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            z-index: 1100;
+            background: rgba(254, 247, 224, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(184, 148, 31, 0.2);
+        }
+
+        .quote-slider {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            animation: slide 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .quote-text {
+            font-size: 14px;
+            color: var(--soft-gray);
+            font-style: italic;
+            margin-right: 100px;
+            font-weight: 300;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .music-control {
+            position: fixed;
+            top: 50px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1100;
+            border: 1px solid rgba(184, 148, 31, 0.2);
+        }
+
+        .play-btn {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .play-btn:hover {
+            background: var(--light-gold);
+            transform: scale(1.05);
+        }
+
+        .progress-container {
+            width: 80px;
+            height: 4px;
+            background: rgba(184, 148, 31, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--primary-gold);
+            transition: width 0.1s linear;
+            border-radius: 2px;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--light-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 25s infinite linear;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--primary-gold);
+            animation-duration: 30s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 20px 0;
+            position: sticky;
+            top: 40px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(184, 148, 31, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 15px 30px;
+            border-radius: 35px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(184, 148, 31, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-gold), var(--light-gold));
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(184, 148, 31, 0.4);
+        }
+
+        .hero-section {
+            padding: 100px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(254, 247, 224, 0.9) 0%, rgba(184, 148, 31, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(
+                from 0deg at 50% 50%, 
+                transparent 0deg, 
+                rgba(184, 148, 31, 0.02) 1deg, 
+                transparent 2deg, 
+                rgba(212, 175, 55, 0.02) 3deg
+            );
+            animation: rotate 120s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            letter-spacing: -0.03em;
+            text-shadow: 3px 6px 12px rgba(184, 148, 31, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--soft-gray);
+            font-weight: 400;
+            margin-bottom: 50px;
+            font-style: italic;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .portfolio-card {
+            background: var(--warm-white);
+            border-radius: 25px;
+            padding: 0;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(184, 148, 31, 0.12);
+            border: 1px solid rgba(184, 148, 31, 0.08);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(184, 148, 31, 0.03), rgba(212, 175, 55, 0.03));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(184, 148, 31, 0.25);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 25px 25px 0 0;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s ease;
+        }
+
+        .portfolio-card:hover .card-image {
+            transform: scale(1.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(184, 148, 31, 0.85), rgba(212, 175, 55, 0.7));
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.6s ease;
+        }
+
+        .portfolio-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 35px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-icon:hover {
+            transform: scale(1.15);
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-content {
+            padding: 40px 35px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            line-height: 1.3;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .card-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        .card-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--light-gold));
+            color: white;
+            padding: 18px 35px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 12px 35px rgba(184, 148, 31, 0.3);
+            border: none;
+            cursor: pointer;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .card-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(184, 148, 31, 0.4);
+            background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
+        }
+
+        .coming-soon-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(184, 148, 31, 0.08));
+            border-radius: 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(184, 148, 31, 0.15);
+        }
+
+        .coming-soon-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sparkle" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25,5 L27,19 L25,33 L23,19 Z M5,25 L19,27 L33,25 L19,23 Z" fill="%23d4af37" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23sparkle)"/></svg>') repeat;
+            opacity: 0.4;
+            animation: sparkle 25s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50px) translateY(-50px); }
+        }
+
+        .coming-soon-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .coming-soon-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            animation: pulse 4s ease-in-out infinite;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .coming-soon-text {
+            font-size: 1.3rem;
+            color: var(--soft-gray);
+            font-style: italic;
+            margin-bottom: 40px;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .notification-form {
+            display: flex;
+            gap: 20px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .notification-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border: 2px solid rgba(184, 148, 31, 0.25);
+            border-radius: 35px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.4s ease;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .notification-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 25px rgba(184, 148, 31, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .notification-btn {
+            padding: 18px 30px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--light-gold));
+            color: white;
+            border: none;
+            border-radius: 35px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(184, 148, 31, 0.3);
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .notification-btn:hover {
+            background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(184, 148, 31, 0.4);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(184, 148, 31, 0.15);
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .contact-item:hover {
+            color: var(--primary-gold);
+            transform: translateY(-3px);
+            background: rgba(184, 148, 31, 0.08);
+        }
+
+        .copyright {
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-top: 25px;
+            font-weight: 400;
+            font-family: 'KkotNaeum', 'Noto Sans KR', sans-serif;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .floating-quote {
+                height: 35px;
+            }
+
+            .quote-text {
+                font-size: 12px;
+            }
+
+            .music-control {
+                top: 45px;
+                right: 15px;
+                padding: 8px 15px;
+                gap: 10px;
+            }
+
+            .play-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 12px;
+            }
+
+            .progress-container {
+                width: 60px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-container {
+                gap: 25px;
+            }
+
+            .nav-link {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .coming-soon-title {
+                font-size: 2.2rem;
+            }
+
+            .notification-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .notification-input {
+                min-width: unset;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card-content {
+                padding: 30px 25px;
+            }
+
+            .portfolio-container {
+                padding: 80px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 80px 15px 60px;
+            }
+
+            .portfolio-container {
+                padding: 60px 10px;
+            }
+
+            .coming-soon-section {
+                padding: 60px 20px;
+                margin: 40px 10px 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .card-image-container {
+                height: 220px;
+            }
+
+            .floating-particles {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <section class="portfolio">
-        
-        <h1>Portfolio</h1>
-        <p>남슬아의 포트폴리오를 소개합니다.</p>
-      
-        <div class="portfolio-grid">
-      
-          <div class="portfolio-card">
-            <img src="썸네일.png" alt="썸네일"/>
-            <h2>남슬아 포트폴리오</h2>
-            <p>안녕하세요.<br>
-              97년생 배우 남슬아입니다.<br>
-              
-              소중한 작품들을 모아 포트폴리오 영상을 만들어보았습니다. <br>
-              
-              항상 최선을다해 준비하고있겠습니다. <br>
-              어울리는 역할이 있다면 연락 주세요</p>
-            <a href="https://youtu.be/uO5ATkiGEUU?si=owTYP1uDijxl88PV" target="_blank" class="portfolio-btn">영상 보기</a>
-          </div>
-
+    <div class="floating-quote">
+        <div class="quote-slider">
+            <span class="quote-text">Life is a tragedy when seen in close-up, but a comedy in long shot. — Charlie Chaplin</span>
+            <span class="quote-text">Life is a tragedy when seen in close-up, but a comedy in long shot. — Charlie Chaplin</span>
         </div>
-      </section>
-      
+    </div>
+
+    <div class="music-control">
+        <audio id="bg-music" src="CODY JON - STAGEFRIGHT (Official Video).mp3" loop></audio>
+        <button id="play-btn" class="play-btn">▶</button>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="floating-particles">
+        <div class="particle" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 15%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 25%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 35%; animation-delay: 9s;"></div>
+        <div class="particle" style="left: 45%; animation-delay: 12s;"></div>
+        <div class="particle" style="left: 55%; animation-delay: 15s;"></div>
+        <div class="particle" style="left: 65%; animation-delay: 18s;"></div>
+        <div class="particle" style="left: 75%; animation-delay: 21s;"></div>
+        <div class="particle" style="left: 85%; animation-delay: 24s;"></div>
+        <div class="particle" style="left: 95%; animation-delay: 27s;"></div>
+    </div>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="portfolio.html" class="nav-link active">PORTFOLIO</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Portfolio</h1>
+            <p class="hero-subtitle">남슬아의 작품 세계를 만나보세요</p>
+        </div>
+    </section>
+
+    <div class="portfolio-container">
+        <div class="portfolio-grid">
+            <div class="portfolio-card fade-in-up">
+                <div class="card-image-container">
+                    <img src="썸네일.png" alt="남슬아 포트폴리오 썸네일" class="card-image">
+                    <div class="image-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">남슬아 포트폴리오</h2>
+                    <p class="card-description">
+                        안녕하세요.<br>
+                        97년생 배우 남슬아입니다.<br><br>
+                        소중한 작품들을 모아 포트폴리오 영상을 만들어보았습니다.<br><br>
+                        항상 최선을 다해 준비하고 있겠습니다.<br>
+                        어울리는 역할이 있다면 연락 주세요.
+                    </p>
+                    <a href="https://youtu.be/uO5ATkiGEUU?si=owTYP1uDijxl88PV" target="_blank" class="card-button">
+                        <span>영상 보기</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="coming-soon-section fade-in-up">
+            <div class="coming-soon-content">
+                <h2 class="coming-soon-title">더 많은 작품이 준비 중입니다</h2>
+                <p class="coming-soon-text">새로운 프로젝트와 작품 소식을 가장 먼저 받아보세요</p>
+                <form class="notification-form" onsubmit="handleNotification(event)">
+                    <input type="email" class="notification-input" placeholder="이메일을 입력하세요" required>
+                    <button type="submit" class="notification-btn">알림 받기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <a href="mailto:abcseul@naver.com" class="contact-item">
+                    <span>📧</span>
+                    <span>abcseul@naver.com</span>
+                </a>
+                <a href="https://instagram.com/seuloveuu" target="_blank" class="contact-item">
+                    <span>📷</span>
+                    <span>@seuloveuu</span>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Nam Seul A. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    localStorage.setItem('musicPlaying', 'true');
+                    localStorage.setItem('musicTime', audio.currentTime);
+                }).catch(error => {
+                    console.error('재생 실패:', error);
+                });
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶';
+                localStorage.setItem('musicPlaying', 'false');
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        }
+
+        playBtn.addEventListener('click', toggleMusic);
+
+        audio.addEventListener('timeupdate', () => {
+            if (!isNaN(audio.duration)) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                localStorage.setItem('musicTime', audio.currentTime);
+            }
+        });
+
+        function handleNotification(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.notification-input').value;
+            
+            if (email) {
+                const btn = event.target.querySelector('.notification-btn');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = '✓ 완료!';
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'linear-gradient(135deg, var(--primary-gold), var(--light-gold))';
+                    event.target.reset();
+                }, 2000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const savedTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+            
+            if (savedTime > 0) {
+                audio.currentTime = savedTime;
+            }
+            
+            if (wasPlaying) {
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                }).catch(error => {
+                    console.error('자동 재생 실패:', error);
+                });
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach((el) => {
+                observer.observe(el);
+            });
+
+            const cards = document.querySelectorAll('.portfolio-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 30 + 's';
+                particle.style.animationDuration = (20 + Math.random() * 15) + 's';
+            });
+        });
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('musicPlaying', !audio.paused);
+            localStorage.setItem('musicTime', audio.currentTime);
+        });
+    </script>
 </body>
 </html>
